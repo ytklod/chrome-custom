@@ -1,0 +1,158 @@
+/* =========================================================================
+   ChatGPT Custom Theme (Stylus)
+
+   Author      : MITSUISHI Yutaka
+   Version     : 1.0.0
+   Date        : 2026-05-03
+   Description : Custom UI theme for ChatGPT
+
+   License     : Public Domain (CC0 1.0 Universal)
+                 https://creativecommons.org/publicdomain/zero/1.0/
+   ========================================================================= */
+
+
+/* -------------------------------------------------------------------------
+    Original
+   ------------------------------------------------------------------------- */
+
+/* Test colors (debug only) */
+:root {
+  /* Base / Global */
+  --color-bg-main: pink;
+  --color-text-primary: purple;
+  --color-text-tertiary: mediumpurple;
+  /* Layout (large areas) */
+  --color-bg-sidebar: blue;
+  --color-bg-header: cyan;
+  --color-bg-footer: rebeccapurple;
+  /* Input / Content */
+  --color-bg-input: violet;    
+  --color-bg-code: green;
+  --color-bg-question: red;
+  /* UI / Interaction */
+  --color-btn-bg: magenta;
+  --color-bg-popup: orange;
+  --color-bg-active: yellow;
+  /* Scrollbar */
+  --color-scrollbar-thumb: white;
+  --color-scrollbar-track: black;
+  /* Text (secondary) */
+  --color-text-popup: white;
+}
+
+
+/* Production colors */
+:root {
+  --color-bg-main: white;
+  --color-text-primary: black;
+  --color-text-tertiary: black;
+  --color-bg-sidebar: #f8f8f8;
+  --color-bg-header: #74aa9c;
+  --color-bg-footer: #dedef7;
+  --color-bg-input: lavender;
+  --color-bg-code: #f5f5f5;
+  --color-bg-question: #f5eb5a;
+  --color-btn-bg: black;
+  --color-bg-popup: green;
+  --color-bg-active: #f5eb5a;
+  --color-scrollbar-thumb: #222222;
+  --color-scrollbar-track: #e0e0e0;
+  --color-text-popup: white;
+}
+
+/* Global scrollbar */
+*::-webkit-scrollbar {
+    width: 10px;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar-thumb) ! important;
+    border-radius: 20px;
+}
+*::-webkit-scrollbar-track {
+    background-color: var(--color-scrollbar-track) ! important;
+}
+
+/* Code block background (primary) */
+.bg-token-bg-elevated-secondary {
+    background-color: var(--color-bg-code) ! important;   
+}
+
+/* Tertiary surfaces (input-like areas) */
+.bg-token-main-surface-tertiary {
+  background-color: var(--color-bg-input) !important;
+}
+
+
+/* Secondary surfaces (HTML preview, etc.) */
+.bg-token-bg-secondary {
+  background-color: var(--color-bg-code) !important;
+}
+
+/* Sidebar background */
+#stage-slideover-sidebar .bg-token-main-surface-primary {
+  background-color:var(--color-bg-sidebar) !important;
+}
+
+/* Input container background */
+form .bg-token-bg-primary {
+  background-color: var(--color-bg-input) !important;
+}
+
+/* User message bubble */
+.user-message-bubble-color {
+    background-color: var(--color-bg-question) ! important;   
+}
+
+/* -------------------------------------------------------------------------
+    Inspired by https://qiita.com/CookieBox26/items/07d81a9c0ef66607dd0f
+   ------------------------------------------------------------------------- */
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP&display=swap");
+
+/* Main container background */
+.\@container\/main {
+  background-color: var(--color-bg-main);
+}
+
+/* ChatGPT theme variables */
+.light {
+  --text-primary: var(--color-text-primary);
+  --text-tertiary: var(--color-text-tertiary);
+  --theme-submit-btn-bg: var(--color-btn-bg);
+  --sidebar-surface-primary: var(--color-bg-sidebar);
+  --bg-secondary: var(--color-bg-active);
+  --main-surface-primary: var(--color-bg-header);
+  /* --bg-primary: var(--color-bg-input); */
+}
+
+/* Bottom gradient */
+.content-fade:after {
+  background-color: var(--color-bg-footer) !important;
+}
+
+/* Popup / tooltip */
+.bg-black,
+[data-radix-popper-content-wrapper] div,
+[data-radix-popper-content-wrapper] div:hover {
+  background-color: var(--color-bg-popup);
+  color: var(--color-text-popup);
+}
+
+/* Primary buttons */
+.btn-primary {
+  background-color: var(--color-bg-popup);
+  color: var(--color-text-popup);
+}
+
+/* Typography */
+:host, body, html {
+  font-family: 'IBM Plex Sans JP', sans-serif;
+  font-size: 16px;
+}
+
+/* Sidebar list spacing */
+.__menu-item {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 1.8rem;
+}
