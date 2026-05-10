@@ -1,0 +1,257 @@
+/* =========================================================================
+   Claude Custom Theme (Stylus)
+
+   Author      : MITSUISHI Yutaka
+   Version     : 1.0.0
+   Date        : 2026-05-08
+   Description : Custom UI theme for Claude
+
+   License     : Public Domain (CC0 1.0 Universal)
+                 https://creativecommons.org/publicdomain/zero/1.0/
+   ========================================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP&display=swap");
+
+
+/* -------------------------------------------------------------------------
+   Theme variables
+   ------------------------------------------------------------------------- */
+
+/* Test colors (debug only) */
+:root {
+  /* Base / Global */
+  --color-bg-main: pink;
+  --color-text-primary: purple;
+  --color-text-tertiary: mediumpurple;
+  /* Layout (large areas) */
+  --color-bg-sidebar: lightgray;
+  --color-bg-header: cyan;
+  --color-bg-footer: rebeccapurple;
+  /* Input / Content */
+  --color-bg-input: violet;    
+  --color-bg-code: green;
+  --color-bg-question: red;
+  /* UI / Interaction */
+  --color-btn-bg: magenta;
+  --color-bg-popup: orange;
+  --color-bg-active: yellow;
+  /* Scrollbar */
+  --color-scrollbar-thumb: white;
+  --color-scrollbar-track: black;
+  /* Text (secondary) */
+  --color-text-popup: white;
+}
+
+/* Production colors */
+:root {
+  --color-bg-main: white;
+  --color-text-primary: black;
+  --color-text-tertiary: black;
+  --color-bg-sidebar: #f8f8f8;
+  --color-bg-header: #fde8de;
+  --color-bg-footer: #fdf7c9;
+  --color-bg-input: #fffbe6;
+  --color-bg-code: #f5f5f5;
+  --color-bg-question: #f5eb5a;
+  --color-btn-bg: black;
+  --color-bg-popup: green;
+  --color-bg-active: #f5eb5a;
+  --color-scrollbar-thumb: #222222;
+  --color-scrollbar-track: #e0e0e0;
+  --color-text-popup: white;
+}
+
+
+/* -------------------------------------------------------------------------
+   Typography
+   ------------------------------------------------------------------------- */
+
+/* Base typography */
+:host, body, html {
+  font-family: 'IBM Plex Sans JP', sans-serif;
+  font-size: 16px;
+}
+
+/* Primary text */
+.text-text-100,
+.text-text-200 {
+  color: var(--color-text-primary) !important;
+}
+
+/* Secondary / tertiary text */
+.text-text-300,
+.text-text-400,
+.text-text-500 {
+  color: var(--color-text-tertiary) !important;
+}
+
+/* Text readability */
+.font-claude-response-body {
+  font-weight: 500 ! important
+}
+
+
+/* -------------------------------------------------------------------------
+   Main layout
+   ------------------------------------------------------------------------- */
+
+/* Main container background */
+#main-content {
+  background-color: var(--color-bg-main) !important;
+}
+
+/* Sidebar background */
+nav[aria-label="サイドバー"] {
+  background-color: var(--color-bg-sidebar) !important;
+}
+
+
+/* -------------------------------------------------------------------------
+   Header
+   ------------------------------------------------------------------------- */
+
+/* Header surfaces */
+header {
+  background-color: var(--color-bg-header) !important;
+}
+[data-testid="chat-title-button"] {
+  background-color: var(--color-bg-header) !important;
+}
+header > div {
+  background-color: var(--color-bg-header) !important;
+}
+
+/* Header gradient */
+.bg-gradient-to-b {
+  background-image: none !important;
+}
+
+
+/* -------------------------------------------------------------------------
+   Input area
+   ------------------------------------------------------------------------- */
+
+/* Input container background */
+.bg-bg-000 {
+  background-color: var(--color-bg-input) !important;
+}
+
+
+/* -------------------------------------------------------------------------
+   Chat area
+   ------------------------------------------------------------------------- */
+
+/* User message bubble */
+[data-user-message-bubble="true"] {
+  background-color: var(--color-bg-question) !important;
+}
+
+/* Code surfaces */
+pre, code {
+  background-color: var(--color-bg-code) !important;
+}
+
+/* Remove "show more" fade */
+.bg-gradient-to-t.from-bg-300.to-transparent {
+  display: none !important;
+}
+
+/* Always show message controls */
+.group-hover\:opacity-100 {
+  opacity: 1 !important;
+}
+
+
+/* -------------------------------------------------------------------------
+   Sidebar
+   ------------------------------------------------------------------------- */
+
+/* Sidebar chat titles */
+nav[aria-label="サイドバー"] a {
+  color: var(--color-text-primary) !important;
+}
+
+/* Active sidebar chat */
+[data-dd-action-name="sidebar-chat-item"].\!bg-bg-300 {
+  background-color: var(--color-bg-active) !important;
+}
+
+/* Sidebar item spacing */
+.h-8[data-dd-action-name="sidebar-chat-item"] {
+  height: 1.6rem !important;
+}
+
+
+/* -------------------------------------------------------------------------
+   Popup / menu
+   ------------------------------------------------------------------------- */
+
+/* Popup container */
+[data-radix-popper-content-wrapper] {
+  background-color: var(--color-bg-popup) !important;
+  color: var(--color-text-popup) !important;
+}
+
+/* Popup menu */
+[role="menu"] {
+  background-color: var(--color-bg-popup) !important;
+}
+
+/* Popup menu text */
+.text-primary {
+  color: var(--color-text-popup) !important;
+}
+
+/* Popup secondary text */
+[role="menuitem"] .text-muted,
+[data-testid="user-menu-header"] {
+  color: var(--color-text-popup) !important;
+}
+
+/* Popup menu text */
+[role="menu"] * {
+  color: var(--color-text-popup) !important;
+}
+
+/* Destructive menu items */
+[role="menu"] .\!text-danger-000,
+[role="menu"] .\!text-danger-000 * {
+  color: #ffb3a7 !important;
+  font-weight: 600 !important;
+}
+
+/* Popup menu hover */
+
+[role="menuitem"][data-highlighted] {
+  background-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+/* Popup submenu hover */
+
+[role="menuitemradio"]:hover,
+[role="menuitemradio"][data-highlighted] {
+  background-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+/* Dropdown selected */
+
+[role="option"][aria-selected="true"] {
+  background-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+
+/* -------------------------------------------------------------------------
+   Scrollbar
+   ------------------------------------------------------------------------- */
+
+/* Chat area scrollbar */
+div[data-autoscroll-container="true"] {
+  scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track) !important;
+  scrollbar-width: auto !important;
+}
+
+/* Sidebar scrollbar */
+.flex.flex-grow.flex-col.overflow-y-auto {
+  scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track) !important;
+  scrollbar-width: auto !important;
+}
