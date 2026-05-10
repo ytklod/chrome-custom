@@ -22,7 +22,7 @@
   --color-text-primary: purple;
   --color-text-tertiary: mediumpurple;
   /* Layout (large areas) */
-  --color-bg-sidebar: blue;
+  --color-bg-sidebar: lightgray;
   --color-bg-header: cyan;
   --color-bg-footer: rebeccapurple;
   /* Input / Content */
@@ -82,7 +82,6 @@
   background-color: var(--color-bg-input) !important;
 }
 
-
 /* Secondary surfaces (HTML preview, etc.) */
 .bg-token-bg-secondary {
   background-color: var(--color-bg-code) !important;
@@ -120,7 +119,7 @@ form .bg-token-bg-primary {
   --text-tertiary: var(--color-text-tertiary);
   --theme-submit-btn-bg: var(--color-btn-bg);
   --sidebar-surface-primary: var(--color-bg-sidebar);
-  --bg-secondary: var(--color-bg-active);
+  --bg-tertiary: var(--color-bg-active);
   --main-surface-primary: var(--color-bg-header);
   /* --bg-primary: var(--color-bg-input); */
 }
