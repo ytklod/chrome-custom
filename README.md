@@ -1,0 +1,2 @@
+- `stylus/` is released under CC0.
+- Other directories are released under the MIT License.
