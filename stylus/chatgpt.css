@@ -2,17 +2,20 @@
    ChatGPT Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.0
-   Date        : 2026-05-03
+   Version     : 1.1.0
+   Created     : 2026-05-03
+   Updated     : 2026-05-10
    Description : Custom UI theme for ChatGPT
 
    License     : Public Domain (CC0 1.0 Universal)
                  https://creativecommons.org/publicdomain/zero/1.0/
    ========================================================================= */
 
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP&display=swap");
+
 
 /* -------------------------------------------------------------------------
-    Original
+   Theme variables
    ------------------------------------------------------------------------- */
 
 /* Test colors (debug only) */
@@ -26,7 +29,7 @@
   --color-bg-header: cyan;
   --color-bg-footer: rebeccapurple;
   /* Input / Content */
-  --color-bg-input: violet;    
+  --color-bg-input: violet;
   --color-bg-code: green;
   --color-bg-question: red;
   /* UI / Interaction */
@@ -39,7 +42,6 @@
   /* Text (secondary) */
   --color-text-popup: white;
 }
-
 
 /* Production colors */
 :root {
@@ -60,60 +62,8 @@
   --color-text-popup: white;
 }
 
-/* Global scrollbar */
-*::-webkit-scrollbar {
-    width: 10px;
-}
-*::-webkit-scrollbar-thumb {
-    background-color: var(--color-scrollbar-thumb) ! important;
-    border-radius: 20px;
-}
-*::-webkit-scrollbar-track {
-    background-color: var(--color-scrollbar-track) ! important;
-}
-
-/* Code block background (primary) */
-.bg-token-bg-elevated-secondary {
-    background-color: var(--color-bg-code) ! important;   
-}
-
-/* Tertiary surfaces (input-like areas) */
-.bg-token-main-surface-tertiary {
-  background-color: var(--color-bg-input) !important;
-}
-
-/* Secondary surfaces (HTML preview, etc.) */
-.bg-token-bg-secondary {
-  background-color: var(--color-bg-code) !important;
-}
-
-/* Sidebar background */
-#stage-slideover-sidebar .bg-token-main-surface-primary {
-  background-color:var(--color-bg-sidebar) !important;
-}
-
-/* Input container background */
-form .bg-token-bg-primary {
-  background-color: var(--color-bg-input) !important;
-}
-
-/* User message bubble */
-.user-message-bubble-color {
-    background-color: var(--color-bg-question) ! important;   
-}
-
-/* -------------------------------------------------------------------------
-    Inspired by https://qiita.com/CookieBox26/items/07d81a9c0ef66607dd0f
-   ------------------------------------------------------------------------- */
-
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP&display=swap");
-
-/* Main container background */
-.\@container\/main {
-  background-color: var(--color-bg-main);
-}
-
-/* ChatGPT theme variables */
+/* ChatGPT theme variables
+   Inspired by https://qiita.com/CookieBox26/items/07d81a9c0ef66607dd0f */
 .light {
   --text-primary: var(--color-text-primary);
   --text-tertiary: var(--color-text-tertiary);
@@ -124,12 +74,95 @@ form .bg-token-bg-primary {
   /* --bg-primary: var(--color-bg-input); */
 }
 
-/* Bottom gradient */
+
+/* -------------------------------------------------------------------------
+   Typography
+   ------------------------------------------------------------------------- */
+
+/* Base typography
+   Inspired by https://qiita.com/CookieBox26/items/07d81a9c0ef66607dd0f */
+:host, body, html {
+  font-family: 'IBM Plex Sans JP', sans-serif;
+  font-size: 16px;
+}
+
+
+/* -------------------------------------------------------------------------
+   Main layout
+   ------------------------------------------------------------------------- */
+
+/* Main container background
+   Inspired by https://qiita.com/CookieBox26/items/07d81a9c0ef66607dd0f */
+.\@container\/main {
+  background-color: var(--color-bg-main);
+}
+
+
+/* -------------------------------------------------------------------------
+   Input area
+   ------------------------------------------------------------------------- */
+
+/* Tertiary surfaces (input-like areas) */
+.bg-token-main-surface-tertiary {
+  background-color: var(--color-bg-input) !important;
+}
+
+/* Input container background */
+form .bg-token-bg-primary {
+  background-color: var(--color-bg-input) !important;
+}
+
+
+/* -------------------------------------------------------------------------
+   Chat area
+   ------------------------------------------------------------------------- */
+
+/* User message bubble */
+.user-message-bubble-color {
+  background-color: var(--color-bg-question) ! important;
+}
+
+/* Code block background (primary) */
+.bg-token-bg-elevated-secondary {
+  background-color: var(--color-bg-code) ! important;
+}
+
+/* Secondary surfaces (HTML preview, etc.) */
+.bg-token-bg-secondary {
+  background-color: var(--color-bg-code) !important;
+}
+
+/* Bottom gradient
+   Inspired by https://qiita.com/CookieBox26/items/07d81a9c0ef66607dd0f */
 .content-fade:after {
   background-color: var(--color-bg-footer) !important;
 }
 
-/* Popup / tooltip */
+
+/* -------------------------------------------------------------------------
+   Sidebar
+   ------------------------------------------------------------------------- */
+
+/* Sidebar background */
+#stage-slideover-sidebar .bg-token-main-surface-primary {
+  background-color:var(--color-bg-sidebar) !important;
+}
+
+/* Sidebar list spacing
+   Inspired by https://qiita.com/CookieBox26/items/07d81a9c0ef66607dd0f */
+.__menu-item {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 1.8rem;
+}
+
+
+/* -------------------------------------------------------------------------
+   Popup / menu
+   ------------------------------------------------------------------------- */
+
+/* Popup / tooltip
+   Inspired by https://qiita.com/CookieBox26/items/07d81a9c0ef66607dd0f */
 .bg-black,
 [data-radix-popper-content-wrapper] div,
 [data-radix-popper-content-wrapper] div:hover {
@@ -137,21 +170,31 @@ form .bg-token-bg-primary {
   color: var(--color-text-popup);
 }
 
-/* Primary buttons */
+
+/* -------------------------------------------------------------------------
+   UI elements
+   ------------------------------------------------------------------------- */
+
+/* Primary buttons
+   Inspired by https://qiita.com/CookieBox26/items/07d81a9c0ef66607dd0f */
 .btn-primary {
   background-color: var(--color-bg-popup);
   color: var(--color-text-popup);
 }
 
-/* Typography */
-:host, body, html {
-  font-family: 'IBM Plex Sans JP', sans-serif;
-  font-size: 16px;
-}
 
-/* Sidebar list spacing */
-.__menu-item {
-  padding-top: 0;
-  padding-bottom: 0;
-  min-height: 1.8rem;
+/* -------------------------------------------------------------------------
+   Scrollbar
+   ------------------------------------------------------------------------- */
+
+/* Global scrollbar */
+*::-webkit-scrollbar {
+    width: 10px;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar-thumb) ! important;
+    border-radius: 20px;
+}
+*::-webkit-scrollbar-track {
+    background-color: var(--color-scrollbar-track) ! important;
 }
