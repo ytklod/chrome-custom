@@ -233,6 +233,11 @@ nav[aria-label="サイドバー"] a {
   background-color: rgba(255, 255, 255, 0.18) !important;
 }
 
+/* Popup selected item */
+.bg-bg-200 {
+  background-color: rgba(255, 255, 255, 0.18) !important;
+}
+
 /* Dropdown selected */
 
 [role="option"][aria-selected="true"] {
