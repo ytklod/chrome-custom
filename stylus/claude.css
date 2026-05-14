@@ -198,7 +198,7 @@ nav[aria-label="サイドバー"] a {
 }
 
 /* Popup menu text */
-.text-primary {
+[data-radix-popper-content-wrapper] [role="menu"] * {
   color: var(--color-text-popup) !important;
 }
 
