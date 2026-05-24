@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Claude Question Navigator",
+  "version": "1.0.0",
+  "description": "Adds previous/next navigation controls to Claude user questions",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://claude.ai/*"
+      ],
+      "js": ["content.js"]
+    }
+  ]
+}
