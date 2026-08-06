@@ -2,9 +2,9 @@
    ChatGPT Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.1.0
+   Version     : 1.1.1
    Created     : 2026-05-03
-   Updated     : 2026-05-10
+   Updated     : 2026-08-06
    Description : Custom UI theme for ChatGPT
 
    License     : Public Domain (CC0 1.0 Universal)
@@ -70,7 +70,7 @@
   --theme-submit-btn-bg: var(--color-btn-bg);
   --sidebar-surface-primary: var(--color-bg-sidebar);
   --bg-tertiary: var(--color-bg-active);
-  --main-surface-primary: var(--color-bg-header);
+  /* --main-surface-primary: var(--color-bg-header);*/
   /* --bg-primary: var(--color-bg-input); */
 }
 
@@ -102,14 +102,16 @@
    Input area
    ------------------------------------------------------------------------- */
 
-/* Tertiary surfaces (input-like areas) */
-.bg-token-main-surface-tertiary {
+/* Input area (structure-based styling)
+   Targets inner editable + wrapper layers; outer form kept transparent */
+form [contenteditable="true"] {
   background-color: var(--color-bg-input) !important;
 }
-
-/* Input container background */
-form .bg-token-bg-primary {
+form > div > div {
   background-color: var(--color-bg-input) !important;
+}
+form {
+  background-color: transparent !important;
 }
 
 
@@ -122,14 +124,17 @@ form .bg-token-bg-primary {
   background-color: var(--color-bg-question) ! important;
 }
 
-/* Code block background (primary) */
-.bg-token-bg-elevated-secondary {
-  background-color: var(--color-bg-code) ! important;
-}
-
-/* Secondary surfaces (HTML preview, etc.) */
-.bg-token-bg-secondary {
+/* Code block (CodeMirror + UI surface)
+   Structure: UI wrapper + CodeMirror editor
+   Note: Both layers must be styled to avoid mismatched backgrounds */
+[class*="bg-(--code-block-surface)"] {
   background-color: var(--color-bg-code) !important;
+}
+.cm-editor {
+  background-color: var(--color-bg-code) !important;
+}
+.cm-content {
+  background-color: transparent !important;
 }
 
 /* Bottom gradient
@@ -143,7 +148,7 @@ form .bg-token-bg-primary {
    Sidebar
    ------------------------------------------------------------------------- */
 
-/* Sidebar background */
+/* Sidebar background (uses legacy token selector; may break with UI updates) */
 #stage-slideover-sidebar .bg-token-main-surface-primary {
   background-color:var(--color-bg-sidebar) !important;
 }
@@ -156,12 +161,22 @@ form .bg-token-bg-primary {
   min-height: 1.8rem;
 }
 
+/* Active item (data-active attribute instead of class) */
+#stage-slideover-sidebar a[data-active] {
+  background-color: var(--color-bg-active) !important;
+}
+
+/* Sidebar header */
+#sidebar-header {
+  background-color: var(--color-bg-header) !important;
+}
+
 
 /* -------------------------------------------------------------------------
    Popup / menu
    ------------------------------------------------------------------------- */
 
-/* Popup / tooltip
+/* Popup / tooltip (Radix-based overlay elements)
    Inspired by https://qiita.com/CookieBox26/items/07d81a9c0ef66607dd0f */
 .bg-black,
 [data-radix-popper-content-wrapper] div,
@@ -197,4 +212,10 @@ form .bg-token-bg-primary {
 }
 *::-webkit-scrollbar-track {
     background-color: var(--color-scrollbar-track) ! important;
+}
+
+/* Sidebar scrollbar (fallback for non-WebKit / overlay scrollbars)
+   Note: ::-webkit-scrollbar does not apply to this area */
+#stage-slideover-sidebar * {
+  scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
 }
