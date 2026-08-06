@@ -2,9 +2,8 @@
    Claude Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.1.0
-   Created     : 2026-05-08
-   Updated     : 2026-05-14
+   Version     : 1.0.1
+   Date        : 2026-08-06
    Description : Custom UI theme for Claude
 
    License     : Public Domain (CC0 1.0 Universal)
@@ -39,7 +38,7 @@
   /* Scrollbar */
   --color-scrollbar-thumb: white;
   --color-scrollbar-track: black;
-  /* Text (secondary) */
+  /* Popup */
   --color-text-popup: white;
 }
 
@@ -75,7 +74,9 @@
 
 /* Primary text */
 .text-text-100,
-.text-text-200 {
+.text-text-200,
+.font-claude-response,
+[data-cds="UserMessage"] .text-primary {
   color: var(--color-text-primary) !important;
 }
 
@@ -86,9 +87,9 @@
   color: var(--color-text-tertiary) !important;
 }
 
-/* Text readability */
+/* Response readability */
 .font-claude-response-body {
-  font-weight: 500 ! important
+  font-weight: 500 !important;
 }
 
 
@@ -111,7 +112,7 @@ nav[aria-label="サイドバー"] {
    Header
    ------------------------------------------------------------------------- */
 
-/* Header surfaces */
+/* Header background */
 header {
   background-color: var(--color-bg-header) !important;
 }
@@ -119,6 +120,9 @@ header {
   background-color: var(--color-bg-header) !important;
 }
 header > div {
+  background-color: var(--color-bg-header) !important;
+}
+nav[aria-label="サイドバー"] > div:first-child {
   background-color: var(--color-bg-header) !important;
 }
 
@@ -132,8 +136,8 @@ header > div {
    Input area
    ------------------------------------------------------------------------- */
 
-/* Input container background */
-.bg-bg-000 {
+/* Chat input background */
+[data-chat-input-container="true"] .bg-surface-3 {
   background-color: var(--color-bg-input) !important;
 }
 
@@ -142,13 +146,15 @@ header > div {
    Chat area
    ------------------------------------------------------------------------- */
 
-/* User message bubble */
-[data-user-message-bubble="true"] {
+/* User message background */
+[data-cds="UserMessage"] .bg-neutral {
   background-color: var(--color-bg-question) !important;
 }
 
-/* Code surfaces */
-pre, code {
+/* Code block background */
+pre,
+code,
+div[role="group"][aria-label$="コード"] {
   background-color: var(--color-bg-code) !important;
 }
 
@@ -167,13 +173,31 @@ pre, code {
    Sidebar
    ------------------------------------------------------------------------- */
 
-/* Sidebar chat titles */
+/* Sidebar text */
 nav[aria-label="サイドバー"] a {
   color: var(--color-text-primary) !important;
 }
 
-/* Active sidebar chat */
-[data-dd-action-name="sidebar-chat-item"].\!bg-bg-300 {
+/* Sidebar navigation icons */
+[data-dd-action-name="sidebar-nav-item"] [data-cds="Icon"] {
+  color: var(--color-text-primary) !important;
+}
+
+/* Sidebar home button */
+a[aria-label="ホーム"] * {
+  color: var(--color-text-primary) !important;
+}
+
+/* Active sidebar text */
+[data-dd-action-name="sidebar-chat-item"][aria-current="page"] {
+  color: var(--color-text-primary) !important;
+}
+[data-dd-action-name="sidebar-chat-item"][aria-current="page"] * {
+  color: var(--color-text-primary) !important;
+}
+
+/* Active sidebar background */
+[data-dd-action-name="sidebar-chat-item"][aria-current="page"]::before {
   background-color: var(--color-bg-active) !important;
 }
 
@@ -209,7 +233,6 @@ nav[aria-label="サイドバー"] a {
   color: var(--color-text-popup) !important;
 }
 
-
 /* Destructive menu items */
 [role="menu"] .\!text-danger-000,
 [role="menu"] .\!text-danger-000 * {
@@ -218,13 +241,11 @@ nav[aria-label="サイドバー"] a {
 }
 
 /* Popup menu hover */
-
 [role="menuitem"][data-highlighted] {
   background-color: rgba(255, 255, 255, 0.18) !important;
 }
 
 /* Popup submenu hover */
-
 [role="menuitemradio"]:hover,
 [role="menuitemradio"][data-highlighted] {
   background-color: rgba(255, 255, 255, 0.18) !important;
@@ -235,8 +256,7 @@ nav[aria-label="サイドバー"] a {
   background-color: rgba(255, 255, 255, 0.18) !important;
 }
 
-/* Dropdown selected */
-
+/* Dropdown selected item */
 [role="option"][aria-selected="true"] {
   background-color: rgba(255, 255, 255, 0.18) !important;
 }
