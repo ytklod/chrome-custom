@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Claude Chat Title on Delete",
+  "version": "1.0.0",
+  "description": "Shows the chat title in Claude's delete confirmation dialog.",
+  "content_scripts": [
+    {
+      "matches": ["https://claude.ai/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
