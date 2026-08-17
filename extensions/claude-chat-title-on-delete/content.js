@@ -2,25 +2,44 @@
    Claude Chat Title on Delete
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.0
+   Version     : 1.0.1
    Created     : 2026-08-08
-   Updated     : 2026-08-08
+   Updated     : 2026-08-17
    Description : Shows the chat title in Claude's delete confirmation dialog
 
    License     : MIT License
                  https://opensource.org/licenses/MIT
    ========================================================================= */
 
-const observer = new MutationObserver(() => {
-  // Find the delete confirmation dialog.
-  const dialog = document.querySelector('[role="alertdialog"]');
+let targetChatTitle = null;
 
-  // Do nothing if the dialog is not open or the title has already been added.
-  if (!dialog || dialog.querySelector('.claude-chat-title-on-delete')) {
+// Remember the chat title when its options button is clicked.
+document.addEventListener('click', event => {
+  const button = event.target.closest?.(
+    'button[aria-label$="のその他のオプション"]'
+  );
+
+  if (!button) {
     return;
   }
 
-  // Find the delete confirmation message.
+  targetChatTitle = button
+    .getAttribute('aria-label')
+    .replace(/のその他のオプション$/, '');
+}, true);
+
+// Show the remembered chat title in the delete confirmation dialog.
+const observer = new MutationObserver(() => {
+  const dialog = document.querySelector('[role="alertdialog"]');
+
+  if (
+    !dialog ||
+    !targetChatTitle ||
+    dialog.querySelector('.claude-chat-title-on-delete')
+  ) {
+    return;
+  }
+
   const message = [...dialog.querySelectorAll('p')]
     .find(el =>
       el.textContent?.trim() === 'このチャットを削除してもよろしいですか？'
@@ -30,25 +49,9 @@ const observer = new MutationObserver(() => {
     return;
   }
 
-  // Find the current chat in the sidebar.
-  const chatLink = document.querySelector(
-    `a[href="${location.pathname}"]`
-  );
-
-  // Get the chat title.
-  const title = chatLink
-    ?.querySelector('.block.truncate')
-    ?.textContent
-    ?.trim();
-
-  if (!title) {
-    return;
-  }
-
-  // Add the chat title below the confirmation message.
   const titleElement = document.createElement('p');
   titleElement.className = 'claude-chat-title-on-delete';
-  titleElement.textContent = `「${title}」`;
+  titleElement.textContent = `「${targetChatTitle}」`;
   titleElement.style.fontWeight = 'bold';
   titleElement.style.marginTop = '8px';
 
