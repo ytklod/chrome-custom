@@ -2,8 +2,9 @@
    Claude Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.1
-   Date        : 2026-08-06
+   Version     : 1.0.2
+   Created     : 2026-05-08
+   Updated     : 2026-08-17
    Description : Custom UI theme for Claude
 
    License     : Public Domain (CC0 1.0 Universal)
@@ -189,15 +190,13 @@ a[aria-label="ホーム"] * {
 }
 
 /* Active sidebar text */
-[data-dd-action-name="sidebar-chat-item"][aria-current="page"] {
-  color: var(--color-text-primary) !important;
-}
-[data-dd-action-name="sidebar-chat-item"][aria-current="page"] * {
+a[aria-current="page"],
+a[aria-current="page"] * {
   color: var(--color-text-primary) !important;
 }
 
 /* Active sidebar background */
-[data-dd-action-name="sidebar-chat-item"][aria-current="page"]::before {
+a[aria-current="page"] {
   background-color: var(--color-bg-active) !important;
 }
 
