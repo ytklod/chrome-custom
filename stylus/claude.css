@@ -2,7 +2,7 @@
    Claude Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.3
+   Version     : 1.0.4
    Created     : 2026-05-08
    Updated     : 2026-08-28
    Description : Custom UI theme for Claude
@@ -45,7 +45,6 @@
 }
 
 /* Production colors */
-/*
 :root {
   --color-bg-main: white;
   --color-text-primary: black;
@@ -63,7 +62,6 @@
   --color-scrollbar-thumb: #222222;
   --color-scrollbar-track: #e0e0e0;
   --color-text-popup: white;
-*/
 }
 
 
@@ -168,8 +166,8 @@ div[role="group"][aria-label$="コード"] {
   display: none !important;
 }
 
-/* Always show message controls */
-.group-hover\:opacity-100 {
+/* Always show message metadata */
+[data-cds="MessageActions"][data-reveal="fade"] {
   opacity: 1 !important;
 }
 
