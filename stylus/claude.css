@@ -2,9 +2,9 @@
    Claude Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.2
+   Version     : 1.0.3
    Created     : 2026-05-08
-   Updated     : 2026-08-17
+   Updated     : 2026-08-28
    Description : Custom UI theme for Claude
 
    License     : Public Domain (CC0 1.0 Universal)
@@ -36,6 +36,7 @@
   --color-btn-bg: magenta;
   --color-bg-popup: orange;
   --color-bg-active: yellow;
+  --color-bg-hover: #faf5ad;
   /* Scrollbar */
   --color-scrollbar-thumb: white;
   --color-scrollbar-track: black;
@@ -44,6 +45,7 @@
 }
 
 /* Production colors */
+/*
 :root {
   --color-bg-main: white;
   --color-text-primary: black;
@@ -57,9 +59,11 @@
   --color-btn-bg: black;
   --color-bg-popup: green;
   --color-bg-active: #f5eb5a;
+  --color-bg-hover: #faf5ad;
   --color-scrollbar-thumb: #222222;
   --color-scrollbar-track: #e0e0e0;
   --color-text-popup: white;
+*/
 }
 
 
@@ -193,6 +197,11 @@ a[aria-label="ホーム"] * {
 a[aria-current="page"],
 a[aria-current="page"] * {
   color: var(--color-text-primary) !important;
+}
+
+/* Sidebar hover background */
+a:not([aria-current="page"]):hover {
+  background-color: var(--color-bg-hover) !important;
 }
 
 /* Active sidebar background */
