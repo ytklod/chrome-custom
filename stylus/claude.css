@@ -2,7 +2,7 @@
    Claude Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.6
+   Version     : 1.0.7
    Created     : 2026-05-08
    Updated     : 2026-08-28
    Description : Custom UI theme for Claude
@@ -110,12 +110,12 @@
    ------------------------------------------------------------------------- */
 
 /* Main container background */
-#main-content {
+.dframe-pane-scroller {
   background-color: var(--color-bg-main) !important;
 }
 
 /* Sidebar background */
-nav[aria-label="サイドバー"] {
+[data-testid="sidebar"] {
   background-color: var(--color-bg-sidebar) !important;
 }
 
@@ -125,16 +125,7 @@ nav[aria-label="サイドバー"] {
    ------------------------------------------------------------------------- */
 
 /* Header background */
-header {
-  background-color: var(--color-bg-header) !important;
-}
-[data-testid="chat-title-button"] {
-  background-color: var(--color-bg-header) !important;
-}
-header > div {
-  background-color: var(--color-bg-header) !important;
-}
-nav[aria-label="サイドバー"] > div:first-child {
+.df-titlebar {
   background-color: var(--color-bg-header) !important;
 }
 
@@ -159,7 +150,7 @@ nav[aria-label="サイドバー"] > div:first-child {
    ------------------------------------------------------------------------- */
 
 /* User message background */
-[data-cds="UserMessage"] .bg-neutral {
+[data-cds="UserMessage"] > div:first-child {
   background-color: var(--color-bg-question) !important;
 }
 
@@ -288,7 +279,7 @@ div[data-autoscroll-container="true"] {
 }
 
 /* Sidebar scrollbar */
-.flex.flex-grow.flex-col.overflow-y-auto {
+.dframe-nav-scroll {
   scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track) !important;
   scrollbar-width: auto !important;
 }
