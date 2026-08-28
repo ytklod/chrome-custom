@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Claude Always Show Message Metadata",
+  "version": "1.0.0",
+  "description": "Always shows message timestamps and actions in Claude.",
+  "content_scripts": [
+    {
+      "matches": ["https://claude.ai/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
