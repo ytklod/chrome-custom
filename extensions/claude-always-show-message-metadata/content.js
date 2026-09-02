@@ -2,33 +2,66 @@
    Claude Always Show Message Metadata
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.0
+   Version     : 1.0.1
    Created     : 2026-08-28
-   Updated     : 2026-08-28
+   Updated     : 2026-09-02
    Description : Always shows message timestamps and actions in Claude
 
    License     : MIT License
                  https://opensource.org/licenses/MIT
    ========================================================================= */
 
-// Trigger Claude to render metadata for deferred message actions.
-function revealMessageMetadata() {
-  document.querySelectorAll(
-    '[data-cds="MessageActions"][data-deferred] button.sr-only'
-  ).forEach(button => {
-    button.focus({ focusVisible: true });
+const deferredActionSelector =
+  '[data-cds="MessageActions"][data-deferred] button.sr-only';
+
+// Reveal metadata when a deferred action enters the viewport.
+const intersectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      return;
+    }
+
+    const button = entry.target;
+
+    intersectionObserver.unobserve(button);
+
+    if (button.isConnected) {
+      button.click();
+    }
   });
+});
+
+// Watch a deferred message action until it enters the viewport.
+function observeDeferredAction(button) {
+  intersectionObserver.observe(button);
 }
 
 // Process messages already present on the page.
-revealMessageMetadata();
-
-// Process messages added when navigating between chats.
-const observer = new MutationObserver(() => {
-  revealMessageMetadata();
+document.querySelectorAll(deferredActionSelector).forEach(button => {
+  observeDeferredAction(button);
 });
 
-observer.observe(document.body, {
+// Watch for deferred message actions added later.
+const mutationObserver = new MutationObserver(mutations => {
+  mutations.forEach(mutation => {
+    mutation.addedNodes.forEach(node => {
+      if (!(node instanceof Element)) {
+        return;
+      }
+
+      if (node.matches(deferredActionSelector)) {
+        observeDeferredAction(node);
+        return;
+      }
+
+      node.querySelectorAll(deferredActionSelector).forEach(button => {
+        observeDeferredAction(button);
+      });
+    });
+  });
+});
+
+mutationObserver.observe(document.body, {
   childList: true,
   subtree: true
 });
