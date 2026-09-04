@@ -2,9 +2,9 @@
    Claude Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.9
+   Version     : 1.0.10
    Created     : 2026-05-08
-   Updated     : 2026-09-01
+   Updated     : 2026-09-02
    Description : Custom UI theme for Claude
 
    License     : Public Domain (CC0 1.0 Universal)
@@ -158,15 +158,40 @@
   background-color: var(--color-bg-question) !important;
 }
 
-/* Attachment thumbnail background */
+/* Attachment thumbnail background (pasted text) */
 [data-testid="file-thumbnail"] > button {
   background-color: var(--color-bg-attachment) !important;
 }
 
-/* Attachment badge */
+/* Attachment badge (pasted text) */
 [data-testid="file-thumbnail"] .bg-bg-000\/70 {
   background-color: var(--color-bg-attachment-badge) !important;
   border: 1px solid var(--color-text-primary) !important;
+}
+
+/* Attachment background (image) */
+[data-cds="MessageAttachmentsImage"] .cds-card-fill {
+  background-color: var(--color-bg-attachment) !important;
+}
+
+/* Attachment background (file) */
+[data-cds="MessageAttachmentsFile"] .cds-card-fill {
+  background-color: var(--color-bg-attachment) !important;
+}
+
+/* Attachment badge (file) */
+[data-cds="MessageAttachmentsFile"] [data-cds="Badge"] {
+  background-color: var(--color-bg-attachment-badge) !important;
+  border: 1px solid var(--color-text-primary) !important;
+}
+
+/* Attachment preview (PDF) */
+.group\/thumbnail > .rounded-lg {
+  background-color: var(--color-bg-attachment) !important;
+}
+
+.group\/thumbnail > .rounded-lg > button.bg-bg-000 {
+  background-color: var(--color-bg-attachment) !important;
 }
 
 /* Code block background */
