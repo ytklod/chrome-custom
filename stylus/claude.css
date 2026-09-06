@@ -2,9 +2,9 @@
    Claude Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.12
+   Version     : 1.0.13
    Created     : 2026-05-08
-   Updated     : 2026-09-04
+   Updated     : 2026-09-06
    Description : Custom UI theme for Claude
 
    License     : Public Domain (CC0 1.0 Universal)
@@ -326,6 +326,12 @@ div[data-autoscroll-container="true"] {
 
 /* Sidebar scrollbar */
 .dframe-nav-scroll {
+  scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track) !important;
+  scrollbar-width: auto !important;
+}
+
+/* Pane scrollbars */
+.dframe-pane-scroller {
   scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track) !important;
   scrollbar-width: auto !important;
 }
