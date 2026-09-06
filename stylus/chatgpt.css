@@ -2,9 +2,9 @@
    ChatGPT Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.1.1
+   Version     : 1.1.2
    Created     : 2026-05-03
-   Updated     : 2026-08-06
+   Updated     : 2026-09-06
    Description : Custom UI theme for ChatGPT
 
    License     : Public Domain (CC0 1.0 Universal)
@@ -36,6 +36,7 @@
   --color-btn-bg: magenta;
   --color-bg-popup: orange;
   --color-bg-active: yellow;
+  --color-bg-hover: #faf5ad;
   /* Scrollbar */
   --color-scrollbar-thumb: white;
   --color-scrollbar-track: black;
@@ -57,6 +58,7 @@
   --color-btn-bg: black;
   --color-bg-popup: green;
   --color-bg-active: #f5eb5a;
+  --color-bg-hover: #faf5ad;
   --color-scrollbar-thumb: #222222;
   --color-scrollbar-track: #e0e0e0;
   --color-text-popup: white;
@@ -159,6 +161,11 @@ form {
   padding-top: 0;
   padding-bottom: 0;
   min-height: 1.8rem;
+}
+
+/* Sidebar item hover */
+#stage-slideover-sidebar a:not([data-active]):hover {
+  background-color: var(--color-bg-hover) !important;
 }
 
 /* Active item (data-active attribute instead of class) */
