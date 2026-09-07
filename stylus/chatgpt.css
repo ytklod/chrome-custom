@@ -2,9 +2,9 @@
    ChatGPT Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.1.2
+   Version     : 1.1.3
    Created     : 2026-05-03
-   Updated     : 2026-09-06
+   Updated     : 2026-09-07
    Description : Custom UI theme for ChatGPT
 
    License     : Public Domain (CC0 1.0 Universal)
@@ -183,13 +183,29 @@ form {
    Popup / menu
    ------------------------------------------------------------------------- */
 
-/* Popup / tooltip (Radix-based overlay elements)
-   Inspired by https://qiita.com/CookieBox26/items/07d81a9c0ef66607dd0f */
+/* Popup / tooltip (Radix-based overlay elements) */
 .bg-black,
-[data-radix-popper-content-wrapper] div,
-[data-radix-popper-content-wrapper] div:hover {
+[data-radix-popper-content-wrapper] [role="menu"] {
   background-color: var(--color-bg-popup);
+}
+
+/* Popup text */
+[data-radix-popper-content-wrapper],
+[data-radix-popper-content-wrapper] * {
   color: var(--color-text-popup);
+}
+
+/* Popup menu item hover */
+[data-radix-popper-content-wrapper] [role="menu"] [role="menuitem"]:hover,
+[data-radix-popper-content-wrapper] [role="menu"] [role="menuitemradio"]:hover {
+  background-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+/* Submenu parent hover / open */
+[data-radix-popper-content-wrapper] [role="menuitem"][data-has-submenu]:hover,
+[data-radix-popper-content-wrapper] [role="menuitem"][data-has-submenu][data-state="open"] {
+  background-color: rgba(255, 255, 255, 0.18) !important;
+  --interactive-bg-secondary-selected: rgba(255, 255, 255, 0.18) !important;
 }
 
 
