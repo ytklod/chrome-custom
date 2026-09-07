@@ -20,57 +20,52 @@
 
 /* Test colors (debug only) */
 :root {
-    /* Base / Global */
-    --color-bg-main: pink;
-    --color-text-primary: purple;
-    --color-text-tertiary: mediumpurple;
-
-    /* Layout (large areas) */
-    --color-bg-sidebar: lightgray;
-    --color-bg-header: cyan;
-    --color-bg-footer: rebeccapurple;
-
-    /* Input / Content */
-    --color-bg-input: violet;
-    --color-bg-code: green;
-    --color-bg-question: red;
-    --color-bg-attachment: salmon;
-    --color-bg-attachment-badge: red;
-
-    /* UI / Interaction */
-    --color-btn-bg: magenta;
-    --color-bg-popup: orange;
-    --color-bg-active: yellow;
-    --color-bg-hover: #faf5ad;
-
-    /* Scrollbar */
-    --color-scrollbar-thumb: white;
-    --color-scrollbar-track: black;
-
-    /* Text (secondary) */
-    --color-text-popup: white;
+  /* Base / Global */
+  --color-bg-main: pink;
+  --color-text-primary: purple;
+  --color-text-tertiary: mediumpurple;
+  /* Layout (large areas) */
+  --color-bg-sidebar: lightgray;
+  --color-bg-header: cyan;
+  --color-bg-footer: rebeccapurple;
+  /* Input / Content */
+  --color-bg-input: violet;
+  --color-bg-code: green;
+  --color-bg-question: red;
+  --color-bg-attachment: salmon;
+  --color-bg-attachment-badge: red;
+  /* UI / Interaction */
+  --color-btn-bg: magenta;
+  --color-bg-popup: orange;
+  --color-bg-active: yellow;
+  --color-bg-hover: #faf5ad;
+  /* Scrollbar */
+  --color-scrollbar-thumb: white;
+  --color-scrollbar-track: black;
+  /* Text (secondary) */
+  --color-text-popup: white;
 }
 
 /* Production colors */
 :root {
-    --color-bg-main: white;
-    --color-text-primary: black;
-    --color-text-tertiary: black;
-    --color-bg-sidebar: #f8f8f8;
-    --color-bg-header: #4da3e3;
-    --color-bg-footer: #fdf7c9;
-    --color-bg-input: #fffbe6;
-    --color-bg-code: #f5f5f5;
-    --color-bg-question: #f5eb5a;
-    --color-bg-attachment: #f5e79d;
-    --color-bg-attachment-badge: #f5eb5a;
-    --color-btn-bg: black;
-    --color-bg-popup: green;
-    --color-bg-active: #f5eb5a;
-    --color-bg-hover: #faf5ad;
-    --color-scrollbar-thumb: #222222;
-    --color-scrollbar-track: #e0e0e0;
-    --color-text-popup: white;
+  --color-bg-main: white;
+  --color-text-primary: black;
+  --color-text-tertiary: black;
+  --color-bg-sidebar: #f8f8f8;
+  --color-bg-header: #4da3e3;
+  --color-bg-footer: #fdf7c9;
+  --color-bg-input: #fffbe6;
+  --color-bg-code: #f5f5f5;
+  --color-bg-question: #f5eb5a;
+  --color-bg-attachment: #f5e79d;
+  --color-bg-attachment-badge: #f5eb5a;
+  --color-btn-bg: black;
+  --color-bg-popup: green;
+  --color-bg-active: #f5eb5a;
+  --color-bg-hover: #faf5ad;
+  --color-scrollbar-thumb: #222222;
+  --color-scrollbar-track: #e0e0e0;
+  --color-text-popup: white;
 }
 
 
@@ -80,14 +75,14 @@
 
 /* Base typography */
 :host, body, html {
-    font-family: 'IBM Plex Sans JP', sans-serif;
-    font-size: 16px;
+  font-family: 'IBM Plex Sans JP', sans-serif;
+  font-size: 16px;
 }
 
 /* Primary text */
 .fai-UserMessage__message,
 [data-testid="markdown-reply"] :is(p, h1, h2, h3, h4, h5, h6, li) {
-    color: var(--color-text-primary) !important;
+  color: var(--color-text-primary) !important;
 }
 
 
@@ -97,17 +92,17 @@
 
 /* Main container background */
 [data-testid="MessageListContainer"] {
-    background-color: var(--color-bg-main) !important;
+  background-color: var(--color-bg-main) !important;
 }
 
 /* Header background */
 header {
-    background-color: var(--color-bg-header) !important;
+  background-color: var(--color-bg-header) !important;
 }
 
 /* Footer background */
 div:has(> div > #m365-chat-input-shared-container) {
-    background-color: var(--color-bg-footer) !important;
+  background-color: var(--color-bg-footer) !important;
 }
 
 
@@ -117,85 +112,85 @@ div:has(> div > #m365-chat-input-shared-container) {
 
 /* Sidebar background */
 .fai-CopilotNavDrawer {
-    background-color: var(--color-bg-sidebar) !important;
+  background-color: var(--color-bg-sidebar) !important;
 }
 
 /* Sidebar header background */
 .fai-CopilotNavDrawerHeader {
-    background-color: var(--color-bg-header) !important;
-    margin-top: -6px !important;
-    margin-bottom: -6px !important;
-    padding-top: 12px !important;
-    padding-bottom: 8px !important;
+  background-color: var(--color-bg-header) !important;
+  margin-top: -6px !important;
+  margin-bottom: -6px !important;
+  padding-top: 12px !important;
+  padding-bottom: 8px !important;
 }
 
 /* Sidebar navigation text */
 .fai-CopilotNavDrawer .fui-NavItem {
-    color: var(--color-text-primary) !important;
+  color: var(--color-text-primary) !important;
 }
 
 /* Sidebar navigation hover */
 .fai-CopilotNavDrawer .fui-NavItem:hover,
 .fai-CopilotNavDrawer .fui-SplitNavItem:hover {
-    background-color: var(--color-bg-hover) !important;
+  background-color: var(--color-bg-hover) !important;
 }
 
 /* Active sidebar navigation item */
 .fai-CopilotNavDrawer .fui-NavItem[aria-current="page"],
 .fai-CopilotNavDrawer .fui-SplitNavItem:has(.fui-NavItem[aria-current="page"]) {
-    background-color: var(--color-bg-active) !important;
+  background-color: var(--color-bg-active) !important;
 }
 
 /* Chats header background */
 #m365-copilot-chats-section > div:first-child {
-    background-color: var(--color-bg-sidebar) !important;
+  background-color: var(--color-bg-sidebar) !important;
 }
 
 /* Chats section title text */
 .fai-SplitCopilotNavCategoryItem__navCategoryItem {
-    color: var(--color-text-primary) !important;
+  color: var(--color-text-primary) !important;
 }
 
 /* Chat list text */
 .fai-CopilotNavSubItem {
-    color: var(--color-text-primary) !important;
+  color: var(--color-text-primary) !important;
 }
 
 /* Chat list action icons */
 .fai-SplitCopilotNavItem__actionButton svg,
 .fai-SplitCopilotNavItem__menuButton svg {
-    color: var(--color-text-primary) !important;
+  color: var(--color-text-primary) !important;
 }
 
 /* Active chat item background */
 div:has(> .fai-CopilotNavSubItem[aria-current="page"]) {
-    --chat-selected-background: var(--color-bg-active) !important;
+  --chat-selected-background: var(--color-bg-active) !important;
 }
 
 /* Chat item hover background */
 .fai-SplitCopilotNavItem {
-    --chat-transparent-hover-background: var(--color-bg-hover) !important;
-    --chat-selected-hover-background: var(--color-bg-hover) !important;
+  --chat-transparent-hover-background: var(--color-bg-hover) !important;
+  --chat-selected-hover-background: var(--color-bg-hover) !important;
 }
 
 /* View all chats container background */
 div:has(> a[href="/chat/all"]) {
-    background-color: var(--color-bg-sidebar) !important;
+  background-color: var(--color-bg-sidebar) !important;
 }
 
 /* View all chats text */
 a[href="/chat/all"] {
-    color: var(--color-text-primary) !important;
+  color: var(--color-text-primary) !important;
 }
 
 /* Account name text */
 [data-testid="nav-footer-cta"] span:not([aria-hidden="true"]) {
-    color: var(--color-text-primary) !important;
+  color: var(--color-text-primary) !important;
 }
 
 /* Upgrade text */
 [data-testid="upgrade-copilot"] {
-    color: var(--color-text-primary) !important;
+  color: var(--color-text-primary) !important;
 }
 
 
@@ -205,12 +200,12 @@ a[href="/chat/all"] {
 
 /* User message background */
 .fai-UserMessage__message {
-    background-color: var(--color-bg-question) !important;
+  background-color: var(--color-bg-question) !important;
 }
 
 /* Attachment background */
 .fai-Reference {
-    background-color: var(--color-bg-attachment) !important;
+  background-color: var(--color-bg-attachment) !important;
 }
 
 /* -------------------------------------------------------------------------
@@ -219,17 +214,17 @@ a[href="/chat/all"] {
 
 /* Chat input background */
 .fai-BebopLiteChatInput__inputWrapper {
-    background-color: var(--color-bg-input) !important;
+  background-color: var(--color-bg-input) !important;
 }
 
 /* Chat input text */
 #m365-chat-editor-target-element {
-    color: var(--color-text-primary) !important;
+  color: var(--color-text-primary) !important;
 }
 
 /* Submit button background */
 .fai-SendButton__stopBackground {
-    background-color: var(--color-btn-bg) !important;
+  background-color: var(--color-btn-bg) !important;
 }
 
 
@@ -239,60 +234,60 @@ a[href="/chat/all"] {
 
 /* Plus menu background */
 [data-testid="PlusMenuPopover"] {
-    background-color: var(--color-bg-popup) !important;
+  background-color: var(--color-bg-popup) !important;
 }
 
 /* Plus menu text */
 [data-testid="PlusMenuPopover"] [role="menuitem"] {
-    color: var(--color-text-popup) !important;
+  color: var(--color-text-popup) !important;
 }
 
 /* Plus menu hover */
 [data-testid="PlusMenuPopover"] [role="menuitem"]:hover {
-    background-color: rgba(255, 255, 255, 0.18) !important;
+  background-color: rgba(255, 255, 255, 0.18) !important;
 }
 
 /* Conversation menu background */
 .fui-MenuPopover[aria-label="Conversation Menu"] {
-    background-color: var(--color-bg-popup) !important;
+  background-color: var(--color-bg-popup) !important;
 }
 
 /* Conversation menu text */
 .fui-MenuPopover[aria-label="Conversation Menu"] [role="menuitem"] {
-    color: var(--color-text-popup) !important;
+  color: var(--color-text-popup) !important;
 }
 
 /* Conversation menu hover */
 .fui-MenuPopover[aria-label="Conversation Menu"] [role="menuitem"]:hover {
-    background-color: rgba(255, 255, 255, 0.18) !important;
+  background-color: rgba(255, 255, 255, 0.18) !important;
 }
 
 /* Settings menu background */
 .fui-MenuPopover:has(button[aria-label^="Upgrade your Copilot"]) {
-    background-color: var(--color-bg-popup) !important;
+  background-color: var(--color-bg-popup) !important;
 }
 
 /* Settings menu text */
 .fui-MenuPopover:has(button[aria-label^="Upgrade your Copilot"]) [role="menuitem"] {
-    color: var(--color-text-popup) !important;
+  color: var(--color-text-popup) !important;
 }
 
 /* Settings menu hover */
 .fui-MenuPopover:has(button[aria-label^="Upgrade your Copilot"]) [role="menuitem"]:hover {
-    background-color: rgba(255, 255, 255, 0.18) !important;
+  background-color: rgba(255, 255, 255, 0.18) !important;
 }
 
 /* Settings footer links */
 .fui-Link[href="https://privacy.microsoft.com/privacystatement"],
 .fui-Link[href="https://www.microsoft.com/servicesagreement"],
 .fui-Link[href="https://support.microsoft.com/copilot"] {
-    --colorNeutralForeground2: var(--color-text-popup) !important;
+  --colorNeutralForeground2: var(--color-text-popup) !important;
 }
 
 /* Chat menu text */
 .fui-MenuPopover:has([data-test-id="scalableGPTModelMenuCatalyst"])
  .fui-MenuItem__content {
-    color: var(--color-text-popup) !important;
+  color: var(--color-text-popup) !important;
 }
 
 /* Chat menu icons */
@@ -300,43 +295,43 @@ a[href="/chat/all"] {
  .fui-MenuItem__icon,
 .fui-MenuPopover:has([data-test-id="scalableGPTModelMenuCatalyst"])
  .fui-MenuItem__submenuIndicator {
-    color: var(--color-text-popup) !important;
+  color: var(--color-text-popup) !important;
 }
 
 /* Chat menu hover */
 .fui-MenuPopover:has([data-test-id="scalableGPTModelMenuCatalyst"])
  :is([role="menuitem"], [role="option"], [role="button"]):hover {
-    background-color: rgba(255, 255, 255, 0.18) !important;
+  background-color: rgba(255, 255, 255, 0.18) !important;
 }
 
 /* Submenu background */
 .fui-MenuPopover[role="presentation"] {
-    background-color: var(--color-bg-popup) !important;
+  background-color: var(--color-bg-popup) !important;
 }
 
 /* Submenu text */
 .fui-MenuPopover[role="presentation"] [role="menuitem"] {
-    color: var(--color-text-popup) !important;
+  color: var(--color-text-popup) !important;
 }
 
 /* Submenu hover */
 .fui-MenuPopover[role="presentation"] [role="menuitem"]:hover {
-    background-color: rgba(255, 255, 255, 0.18) !important;
+  background-color: rgba(255, 255, 255, 0.18) !important;
 }
 
 /* Notebooks menu background */
 .fui-MenuPopover[role="dialog"][aria-label="Notebooks"] {
-    background-color: var(--color-bg-popup) !important;
+  background-color: var(--color-bg-popup) !important;
 }
 
 /* Notebooks menu text */
 .fui-MenuPopover[role="dialog"][aria-label="Notebooks"] :is(.fui-Text, .fui-NavItem) {
-    color: var(--color-text-popup) !important;
+  color: var(--color-text-popup) !important;
 }
 
 /* Notebooks menu hover */
 .fui-MenuPopover[role="dialog"][aria-label="Notebooks"] .fui-SplitNavItem:hover {
-    background-color: rgba(255, 255, 255, 0.18) !important;
+  background-color: rgba(255, 255, 255, 0.18) !important;
 }
 
 
@@ -346,12 +341,12 @@ a[href="/chat/all"] {
 
 /* Code block header background */
 .scriptor-component-code-block > div:has(.fui-Overflow #copy-button) {
-    background-color: var(--color-bg-code) !important;
+  background-color: var(--color-bg-code) !important;
 }
 
 /* Code block background */
 .scriptor-component-code-block [aria-label="Code editor"] {
-    background-color: var(--color-bg-code) !important;
+  background-color: var(--color-bg-code) !important;
 }
 
 
@@ -361,13 +356,13 @@ a[href="/chat/all"] {
 
 /* Main chat scrollbar */
 .fui-Virtualizer-Scroll-View-Dynamic__container {
-    scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track) !important;
-    scrollbar-width: auto !important;
+  scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track) !important;
+  scrollbar-width: auto !important;
 }
 
 /* Sidebar scrollbar */
 .fai-CopilotNavDrawerBody {
-    overflow-y: scroll !important;
-    scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track) !important;
-    scrollbar-width: auto !important;
+  overflow-y: scroll !important;
+  scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track) !important;
+  scrollbar-width: auto !important;
 }
