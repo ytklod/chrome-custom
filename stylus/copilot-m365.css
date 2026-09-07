@@ -2,9 +2,9 @@
    Copilot M365 Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.1
+   Version     : 1.0.2
    Created     : 2026-09-06
-   Updated     : 2026-09-06
+   Updated     : 2026-09-07
    Description : Custom UI theme for Microsoft Copilot in Microsoft 365
 
    License     : Public Domain (CC0 1.0 Universal)
@@ -34,6 +34,8 @@
     --color-bg-input: violet;
     --color-bg-code: green;
     --color-bg-question: red;
+    --color-bg-attachment: salmon;
+    --color-bg-attachment-badge: red;
 
     /* UI / Interaction */
     --color-btn-bg: magenta;
@@ -60,6 +62,8 @@
     --color-bg-input: #fffbe6;
     --color-bg-code: #f5f5f5;
     --color-bg-question: #f5eb5a;
+    --color-bg-attachment: #f5e79d;
+    --color-bg-attachment-badge: #f5eb5a;
     --color-btn-bg: black;
     --color-bg-popup: green;
     --color-bg-active: #f5eb5a;
@@ -204,6 +208,10 @@ a[href="/chat/all"] {
     background-color: var(--color-bg-question) !important;
 }
 
+/* Attachment background */
+.fai-Reference {
+    background-color: var(--color-bg-attachment) !important;
+}
 
 /* -------------------------------------------------------------------------
    Chat input
