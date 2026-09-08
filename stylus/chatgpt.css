@@ -2,7 +2,7 @@
    ChatGPT Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.1.4
+   Version     : 1.1.5
    Created     : 2026-05-03
    Updated     : 2026-09-08
    Description : Custom UI theme for ChatGPT
@@ -32,6 +32,8 @@
   --color-bg-input: violet;
   --color-bg-code: green;
   --color-bg-question: red;
+  --color-bg-attachment: salmon;
+  --color-bg-attachment-badge: red;
   /* UI / Interaction */
   --color-btn-bg: magenta;
   --color-bg-popup: orange;
@@ -55,6 +57,8 @@
   --color-bg-input: #fffbe6;
   --color-bg-code: #f5f5f5;
   --color-bg-question: #f5eb5a;
+  --color-bg-attachment: #f5e79d;
+  --color-bg-attachment-badge: #f5eb5a;
   --color-btn-bg: black;
   --color-bg-popup: green;
   --color-bg-active: #f5eb5a;
@@ -124,6 +128,16 @@ form {
 /* User message bubble */
 .user-message-bubble-color {
   background-color: var(--color-bg-question) ! important;
+}
+
+/* Image attachment background */
+div.flex.flex-row.items-center.justify-end.gap-1:has(.group\/message-image) {
+  background-color: var(--color-bg-attachment) !important;
+}
+
+/* File attachment background */
+.group\/file-tile > div[data-default-action="true"] button {
+  background-color: var(--color-bg-attachment) !important;
 }
 
 /* Code block (CodeMirror + UI surface)
