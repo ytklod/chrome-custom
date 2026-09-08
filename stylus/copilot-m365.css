@@ -2,7 +2,7 @@
    Copilot M365 Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.3
+   Version     : 1.0.4
    Created     : 2026-09-06
    Updated     : 2026-09-08
    Description : Custom UI theme for Microsoft Copilot in Microsoft 365
@@ -162,9 +162,34 @@ div:has(> div > #m365-chat-input-shared-container) {
   color: var(--color-text-primary) !important;
 }
 
-/* Active chat item background */
+/* Chat list item height */
+div:has(> .fai-SplitCopilotNavItem) {
+  height: 24px !important;
+}
+
+/* Active chat item */
 div:has(> .fai-CopilotNavSubItem[aria-current="page"]) {
+  height: 24px !important;
+  top: 4px !important;
   --chat-selected-background: var(--color-bg-active) !important;
+}
+
+/* Active chat link position */
+.fai-CopilotNavSubItem[aria-current="page"] {
+  position: relative !important;
+  top: -4px !important;
+}
+
+/* Chat item hover */
+.fai-SplitCopilotNavItem:hover {
+  height: 24px !important;
+  top: 4px !important;
+}
+
+/* Chat link position on hover */
+.fai-SplitCopilotNavItem:hover .fai-CopilotNavSubItem {
+  position: relative !important;
+  top: -4px !important;
 }
 
 /* Chat item hover background */
