@@ -2,9 +2,9 @@
    Copilot M365 Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.6
+   Version     : 1.0.7
    Created     : 2026-09-06
-   Updated     : 2026-09-08
+   Updated     : 2026-09-09
    Description : Custom UI theme for Microsoft Copilot in Microsoft 365
 
    License     : Public Domain (CC0 1.0 Universal)
@@ -171,13 +171,26 @@ div:has(> .fai-SplitCopilotNavItem) {
 div:has(> .fai-CopilotNavSubItem[aria-current="page"]) {
   height: 24px !important;
   top: 4px !important;
-  --chat-selected-background: var(--color-bg-active) !important;
+  --chat-selected-background: transparent !important;
 }
 
 /* Active chat link position */
 .fai-CopilotNavSubItem[aria-current="page"] {
   position: relative !important;
   top: -4px !important;
+}
+
+/* Active chat item background */
+div:has(> .fai-CopilotNavSubItem[aria-current="page"])::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 24px;
+  background-color: var(--color-bg-active);
+  border-radius: 4px;
+  pointer-events: none;
 }
 
 /* Chat item hover */
@@ -194,8 +207,26 @@ div:has(> .fai-CopilotNavSubItem[aria-current="page"]) {
 
 /* Chat item hover background */
 .fai-SplitCopilotNavItem {
-  --chat-transparent-hover-background: var(--color-bg-hover) !important;
-  --chat-selected-hover-background: var(--color-bg-active) !important;
+  --chat-transparent-hover-background: transparent !important;
+  --chat-selected-hover-background: transparent !important;
+}
+
+/* Chat item hover overlay */
+.fai-SplitCopilotNavItem:hover::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 24px;
+  background-color: var(--color-bg-hover);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* Active chat item hover background */
+div:has(> .fai-CopilotNavSubItem[aria-current="page"]):hover::before {
+  background-color: var(--color-bg-active);
 }
 
 /* View all chats container background */
