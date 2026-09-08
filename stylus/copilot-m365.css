@@ -2,7 +2,7 @@
    Copilot M365 Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.7
+   Version     : 1.0.8
    Created     : 2026-09-06
    Updated     : 2026-09-09
    Description : Custom UI theme for Microsoft Copilot in Microsoft 365
@@ -194,7 +194,7 @@ div:has(> .fai-CopilotNavSubItem[aria-current="page"])::before {
 }
 
 /* Chat item hover */
-.fai-SplitCopilotNavItem:hover {
+.fai-SplitCopilotNavItem:has(> .fai-CopilotNavSubItem):hover {
   height: 24px !important;
   top: 4px !important;
 }
@@ -212,7 +212,7 @@ div:has(> .fai-CopilotNavSubItem[aria-current="page"])::before {
 }
 
 /* Chat item hover overlay */
-.fai-SplitCopilotNavItem:hover::before {
+.fai-SplitCopilotNavItem:has(> .fai-CopilotNavSubItem):hover::before {
   content: "";
   position: absolute;
   left: 0;
@@ -391,17 +391,27 @@ a[href="/chat/all"] {
 }
 
 /* Notebooks menu background */
-.fui-MenuPopover[role="dialog"][aria-label="Notebooks"] {
+.fui-MenuPopover[role="dialog"] {
   background-color: var(--color-bg-popup) !important;
 }
 
 /* Notebooks menu text */
-.fui-MenuPopover[role="dialog"][aria-label="Notebooks"] :is(.fui-Text, .fui-NavItem) {
+.fui-MenuPopover[role="dialog"] :is(.fui-Text, .fui-NavItem) {
+  color: var(--color-text-popup) !important;
+}
+
+/* Notebooks menu placeholder */
+.fui-MenuPopover[role="dialog"] input::placeholder {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Notebooks menu icons */
+.fui-MenuPopover[role="dialog"] svg {
   color: var(--color-text-popup) !important;
 }
 
 /* Notebooks menu hover */
-.fui-MenuPopover[role="dialog"][aria-label="Notebooks"] .fui-SplitNavItem:hover {
+.fui-MenuPopover[role="dialog"] .fui-SplitNavItem:hover {
   background-color: rgba(255, 255, 255, 0.18) !important;
 }
 
