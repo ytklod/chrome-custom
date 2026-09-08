@@ -2,9 +2,9 @@
    Copilot M365 Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.2
+   Version     : 1.0.3
    Created     : 2026-09-06
-   Updated     : 2026-09-07
+   Updated     : 2026-09-08
    Description : Custom UI theme for Microsoft Copilot in Microsoft 365
 
    License     : Public Domain (CC0 1.0 Universal)
@@ -208,6 +208,7 @@ a[href="/chat/all"] {
   background-color: var(--color-bg-attachment) !important;
 }
 
+
 /* -------------------------------------------------------------------------
    Chat input
    ------------------------------------------------------------------------- */
@@ -263,17 +264,19 @@ a[href="/chat/all"] {
 }
 
 /* Settings menu background */
-.fui-MenuPopover:has(button[aria-label^="Upgrade your Copilot"]) {
+.fui-MenuPopover:has(.fui-Link[href="https://privacy.microsoft.com/privacystatement"]) {
   background-color: var(--color-bg-popup) !important;
 }
 
 /* Settings menu text */
-.fui-MenuPopover:has(button[aria-label^="Upgrade your Copilot"]) [role="menuitem"] {
+.fui-MenuPopover:has(.fui-Link[href="https://privacy.microsoft.com/privacystatement"])
+ [role="menuitem"] {
   color: var(--color-text-popup) !important;
 }
 
 /* Settings menu hover */
-.fui-MenuPopover:has(button[aria-label^="Upgrade your Copilot"]) [role="menuitem"]:hover {
+.fui-MenuPopover:has(.fui-Link[href="https://privacy.microsoft.com/privacystatement"])
+ [role="menuitem"]:hover {
   background-color: rgba(255, 255, 255, 0.18) !important;
 }
 
@@ -281,7 +284,14 @@ a[href="/chat/all"] {
 .fui-Link[href="https://privacy.microsoft.com/privacystatement"],
 .fui-Link[href="https://www.microsoft.com/servicesagreement"],
 .fui-Link[href="https://support.microsoft.com/copilot"] {
-  --colorNeutralForeground2: var(--color-text-popup) !important;
+  -webkit-text-fill-color: var(--color-text-popup) !important;
+}
+
+/* Settings footer links hover */
+.fui-Link[href="https://privacy.microsoft.com/privacystatement"]:hover,
+.fui-Link[href="https://www.microsoft.com/servicesagreement"]:hover,
+.fui-Link[href="https://support.microsoft.com/copilot"]:hover {
+  background-color: rgba(255, 255, 255, 0.18) !important;
 }
 
 /* Chat menu text */
