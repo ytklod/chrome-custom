@@ -2,9 +2,9 @@
    ChatGPT Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.1.5
+   Version     : 1.1.6
    Created     : 2026-05-03
-   Updated     : 2026-09-08
+   Updated     : 2026-09-09
    Description : Custom UI theme for ChatGPT
 
    License     : Public Domain (CC0 1.0 Universal)
@@ -101,6 +101,11 @@
    Inspired by https://qiita.com/CookieBox26/items/07d81a9c0ef66607dd0f */
 .\@container\/main {
   background-color: var(--color-bg-main);
+}
+
+/* Main header actions */
+#conversation-header-actions {
+  background-color: var(--color-bg-header) !important;
 }
 
 
