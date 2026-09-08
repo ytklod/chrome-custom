@@ -2,7 +2,7 @@
    ChatGPT Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.1.6
+   Version     : 1.1.7
    Created     : 2026-05-03
    Updated     : 2026-09-09
    Description : Custom UI theme for ChatGPT
@@ -184,6 +184,12 @@ div.flex.flex-row.items-center.justify-end.gap-1:has(.group\/message-image) {
 
 /* Sidebar item hover */
 #stage-slideover-sidebar a:not([data-active]):hover {
+  background-color: var(--color-bg-hover) !important;
+}
+
+/* Sidebar menu button hover / open */
+#stage-slideover-sidebar [data-sidebar-item="true"][aria-haspopup="menu"]:hover,
+#stage-slideover-sidebar [data-sidebar-item="true"][aria-haspopup="menu"][data-state="open"] {
   background-color: var(--color-bg-hover) !important;
 }
 
