@@ -2,9 +2,9 @@
    Claude Always Show Message Metadata
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.1
+   Version     : 1.0.2
    Created     : 2026-08-28
-   Updated     : 2026-09-02
+   Updated     : 2026-09-11
    Description : Always shows message timestamps and actions in Claude
 
    License     : MIT License
@@ -13,6 +13,9 @@
 
 const deferredActionSelector =
   '[data-cds="MessageActions"][data-deferred] button.sr-only';
+
+const hiddenTimeSelector =
+  'time[data-cds="RelativeTime"][data-cds-reveal-on-hover]';
 
 // Reveal metadata when a deferred action enters the viewport.
 const intersectionObserver = new IntersectionObserver(entries => {
@@ -36,12 +39,21 @@ function observeDeferredAction(button) {
   intersectionObserver.observe(button);
 }
 
+// Always show a message timestamp.
+function revealTimestamp(time) {
+  time.removeAttribute("data-cds-reveal-on-hover");
+}
+
 // Process messages already present on the page.
 document.querySelectorAll(deferredActionSelector).forEach(button => {
   observeDeferredAction(button);
 });
 
-// Watch for deferred message actions added later.
+document.querySelectorAll(hiddenTimeSelector).forEach(time => {
+  revealTimestamp(time);
+});
+
+// Watch for message metadata added later.
 const mutationObserver = new MutationObserver(mutations => {
   mutations.forEach(mutation => {
     mutation.addedNodes.forEach(node => {
@@ -51,11 +63,18 @@ const mutationObserver = new MutationObserver(mutations => {
 
       if (node.matches(deferredActionSelector)) {
         observeDeferredAction(node);
-        return;
+      } else {
+        node.querySelectorAll(deferredActionSelector).forEach(button => {
+          observeDeferredAction(button);
+        });
       }
 
-      node.querySelectorAll(deferredActionSelector).forEach(button => {
-        observeDeferredAction(button);
+      if (node.matches(hiddenTimeSelector)) {
+        revealTimestamp(node);
+      }
+
+      node.querySelectorAll(hiddenTimeSelector).forEach(time => {
+        revealTimestamp(time);
       });
     });
   });
