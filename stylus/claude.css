@@ -2,7 +2,7 @@
    Claude Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.18
+   Version     : 1.0.19
    Created     : 2026-05-08
    Updated     : 2026-09-12
    Description : Custom UI theme for Claude
@@ -312,7 +312,7 @@ div[data-row]:has(input[aria-label="名前を変更"]) {
 }
 
 /* Popup placeholder */
-[data-cds="TextInput"] .placeholder\:text-muted::placeholder {
+input[data-cds="TextInput"]::placeholder {
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
