@@ -2,9 +2,9 @@
    ChatGPT Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.1.8
+   Version     : 1.1.9
    Created     : 2026-05-03
-   Updated     : 2026-09-11
+   Updated     : 2026-09-12
    Description : Custom UI theme for ChatGPT
 
    License     : Public Domain (CC0 1.0 Universal)
@@ -171,18 +171,28 @@ div.flex.flex-row.items-center.justify-end.gap-1:has(.group\/message-image) {
 
 /* Sidebar background (uses legacy token selector; may break with UI updates) */
 #stage-slideover-sidebar .bg-token-main-surface-primary {
-  background-color:var(--color-bg-sidebar) !important;
+  background-color: var(--color-bg-sidebar) !important;
 }
 
 /* Sidebar chat list spacing */
-#stage-slideover-sidebar a.__menu-item[href^="/c/"] {
+#stage-slideover-sidebar a.__menu-item[href^="/c/"],
+#stage-slideover-sidebar .__menu-item:has(input[name="title-editor"]) {
   padding-top: 0;
   padding-bottom: 0;
   min-height: 1.6rem;
 }
 
-/* Sidebar item hover */
-#stage-slideover-sidebar a:not([data-active]):hover {
+/* Sidebar item hover / menu open */
+#stage-slideover-sidebar a:not([data-active]):hover,
+#stage-slideover-sidebar a:not([data-active]):has(
+  [data-conversation-options-trigger][data-state="open"]
+) {
+  background-color: var(--color-bg-hover) !important;
+}
+
+/* Sidebar title editing */
+#stage-slideover-sidebar
+.__menu-item:not([data-active]):has(input[name="title-editor"]) {
   background-color: var(--color-bg-hover) !important;
 }
 
@@ -193,7 +203,8 @@ div.flex.flex-row.items-center.justify-end.gap-1:has(.group\/message-image) {
 }
 
 /* Active item (data-active attribute instead of class) */
-#stage-slideover-sidebar a[data-active] {
+#stage-slideover-sidebar a[data-active],
+#stage-slideover-sidebar .__menu-item[data-active]:has(input[name="title-editor"]) {
   background-color: var(--color-bg-active) !important;
 }
 
