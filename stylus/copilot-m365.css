@@ -2,9 +2,9 @@
    Copilot M365 Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.9
+   Version     : 1.0.10
    Created     : 2026-09-06
-   Updated     : 2026-09-09
+   Updated     : 2026-09-12
    Description : Custom UI theme for Microsoft Copilot in Microsoft 365
 
    License     : Public Domain (CC0 1.0 Universal)
@@ -228,6 +228,52 @@ div:has(> .fai-CopilotNavSubItem[aria-current="page"])::before {
 div:has(> .fai-CopilotNavSubItem[aria-current="page"]):hover::before {
   background-color: var(--color-bg-active);
 }
+
+/* Chat item position with open menu */
+.fai-SplitCopilotNavItem:has(
+  > .fai-SplitCopilotNavItem__menuButton[aria-expanded="true"]
+) {
+  height: 24px !important;
+  top: 4px !important;
+}
+
+/* Chat link position with open menu */
+.fai-SplitCopilotNavItem:has(
+  > .fai-SplitCopilotNavItem__menuButton[aria-expanded="true"]
+) > .fai-CopilotNavSubItem {
+  position: relative !important;
+  top: -4px !important;
+}
+
+/* Chat item with open menu */
+.fai-SplitCopilotNavItem:has(
+  > .fai-SplitCopilotNavItem__menuButton[aria-expanded="true"]
+)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 24px;
+  background-color: var(--color-bg-hover);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* Active chat item with open menu */
+.fai-SplitCopilotNavItem:has(
+  > .fai-CopilotNavSubItem[aria-current="page"]
+):has(
+  > .fai-SplitCopilotNavItem__menuButton[aria-expanded="true"]
+)::before {
+  background-color: var(--color-bg-active);
+}
+
+/*
+ * A hovered non-active chat item cannot remain highlighted after opening
+ * the rename dialog because it no longer exposes a CSS-selectable state.
+ * The active chat remains identifiable by aria-current="page".
+ */
 
 /* View all chats container background */
 div:has(> a[href="/chat/all"]) {
