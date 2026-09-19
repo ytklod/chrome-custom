@@ -2,20 +2,25 @@
    Claude Always Show Message Metadata
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.2
+   Version     : 1.0.3
    Created     : 2026-08-28
-   Updated     : 2026-09-11
+   Updated     : 2026-09-19
    Description : Always shows message timestamps and actions in Claude
 
    License     : MIT License
                  https://opensource.org/licenses/MIT
    ========================================================================= */
 
+// Timestamp display mode:
+// false = Claude's original display (e.g. "2時間前", "9月4日")
+// true  = Full date and time (e.g. "2026年9月4日 19:10")
+const SHOW_FULL_TIMESTAMP = true;
+
 const deferredActionSelector =
   '[data-cds="MessageActions"][data-deferred] button.sr-only';
 
-const hiddenTimeSelector =
-  'time[data-cds="RelativeTime"][data-cds-reveal-on-hover]';
+const timestampSelector =
+  'time[data-cds="RelativeTime"]';
 
 // Reveal metadata when a deferred action enters the viewport.
 const intersectionObserver = new IntersectionObserver(entries => {
@@ -42,6 +47,24 @@ function observeDeferredAction(button) {
 // Always show a message timestamp.
 function revealTimestamp(time) {
   time.removeAttribute("data-cds-reveal-on-hover");
+
+  if (!SHOW_FULL_TIMESTAMP) {
+    return;
+  }
+
+  const originalText = time.textContent.trim();
+  const date = new Date(time.dateTime);
+
+  const fullText = new Intl.DateTimeFormat("ja-JP", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  }).format(date);
+
+  time.textContent = `${fullText} (${originalText})`;
 }
 
 // Process messages already present on the page.
@@ -49,7 +72,7 @@ document.querySelectorAll(deferredActionSelector).forEach(button => {
   observeDeferredAction(button);
 });
 
-document.querySelectorAll(hiddenTimeSelector).forEach(time => {
+document.querySelectorAll(timestampSelector).forEach(time => {
   revealTimestamp(time);
 });
 
@@ -69,11 +92,11 @@ const mutationObserver = new MutationObserver(mutations => {
         });
       }
 
-      if (node.matches(hiddenTimeSelector)) {
+      if (node.matches(timestampSelector)) {
         revealTimestamp(node);
       }
 
-      node.querySelectorAll(hiddenTimeSelector).forEach(time => {
+      node.querySelectorAll(timestampSelector).forEach(time => {
         revealTimestamp(time);
       });
     });
