@@ -2,9 +2,9 @@
    Copilot M365 Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.10
+   Version     : 1.0.11
    Created     : 2026-09-06
-   Updated     : 2026-09-12
+   Updated     : 2026-09-19
    Description : Custom UI theme for Microsoft Copilot in Microsoft 365
 
    License     : Public Domain (CC0 1.0 Universal)
@@ -130,15 +130,43 @@ div:has(> div > #m365-chat-input-shared-container) {
 }
 
 /* Sidebar navigation hover */
-.fai-CopilotNavDrawer .fui-NavItem:hover,
-.fai-CopilotNavDrawer .fui-SplitNavItem:hover {
-  background-color: var(--color-bg-hover) !important;
+.fai-CopilotNavItem:hover {
+  position: relative !important;
+}
+
+.fai-CopilotNavItem:hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-bg-hover);
+  border-radius: 4px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.fai-CopilotNavItem:hover > * {
+  position: relative !important;
+  z-index: 1;
 }
 
 /* Active sidebar navigation item */
-.fai-CopilotNavDrawer .fui-NavItem[aria-current="page"],
-.fai-CopilotNavDrawer .fui-SplitNavItem:has(.fui-NavItem[aria-current="page"]) {
-  background-color: var(--color-bg-active) !important;
+.fai-CopilotNavItem[aria-current="page"] {
+  position: relative !important;
+}
+
+.fai-CopilotNavItem[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-bg-active);
+  border-radius: 4px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.fai-CopilotNavItem[aria-current="page"] > * {
+  position: relative !important;
+  z-index: 1;
 }
 
 /* Chats header background */
