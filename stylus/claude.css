@@ -2,9 +2,9 @@
    Claude Custom Theme (Stylus)
 
    Author      : MITSUISHI Yutaka
-   Version     : 1.0.19
+   Version     : 1.0.20
    Created     : 2026-05-08
-   Updated     : 2026-09-12
+   Updated     : 2026-09-19
    Description : Custom UI theme for Claude
 
    License     : Public Domain (CC0 1.0 Universal)
@@ -35,6 +35,9 @@
   --color-bg-question: red;
   --color-bg-attachment: salmon;
   --color-bg-attachment-badge: red;
+  --color-input-model-haiku: #f4d58d;
+  --color-input-model-sonnet: #f0a15d;
+  --color-input-model-opus: #c86400;
   /* UI / Interaction */
   --color-btn-bg: magenta;
   --color-bg-popup: orange;
@@ -61,6 +64,9 @@
   --color-bg-question: #f5eb5a;
   --color-bg-attachment: #f5e79d;
   --color-bg-attachment-badge: #f5eb5a;
+  --color-input-model-haiku: #f4d58d;
+  --color-input-model-sonnet: #f0a15d;
+  --color-input-model-opus: #c86400;
   --color-btn-bg: black;
   --color-bg-popup: green;
   --color-bg-active: #f5eb5a;
@@ -152,6 +158,101 @@
 [data-chat-input-container="true"] .bg-surface-3,
 .bg-surface-3.rounded-composer {
   background-color: var(--color-bg-input) !important;
+}
+
+
+/* -------------------------------------------------------------------------
+   Input model / effort
+   ------------------------------------------------------------------------- */
+
+/* Default */
+:root {
+  --color-input-model: var(--color-input-model-sonnet);
+
+  --color-input-effort-1: white;
+  --color-input-effort-2: white;
+  --color-input-effort-3: white;
+  --color-input-effort-4: white;
+  --color-input-effort-5: white;
+}
+
+/* Haiku */
+body:has(button[data-testid="model-selector-dropdown"][aria-label*="Haiku"]) {
+  --color-input-model: var(--color-input-model-haiku);
+}
+
+/* Sonnet */
+body:has(button[data-testid="model-selector-dropdown"][aria-label*="Sonnet"]) {
+  --color-input-model: var(--color-input-model-sonnet);
+}
+
+/* Opus */
+body:has(button[data-testid="model-selector-dropdown"][aria-label*="Opus"]) {
+  --color-input-model: var(--color-input-model-opus);
+}
+
+/* Level 1 (Haiku / Low) */
+body:has(button[data-testid="model-selector-dropdown"][aria-label*="Haiku"]:not([aria-label*=" 拡張"])),
+body:has(button[data-testid="model-selector-dropdown"][aria-label*=" 低"]) {
+  --color-input-effort-1: white;
+  --color-input-effort-2: white;
+  --color-input-effort-3: white;
+  --color-input-effort-4: white;
+  --color-input-effort-5: var(--color-input-model);
+}
+
+/* Level 2 (Medium) */
+body:has(button[data-testid="model-selector-dropdown"][aria-label*=" 中"]) {
+  --color-input-effort-1: white;
+  --color-input-effort-2: white;
+  --color-input-effort-3: white;
+  --color-input-effort-4: var(--color-input-model);
+  --color-input-effort-5: var(--color-input-model);
+}
+
+/* Level 3 (High) */
+body:has(button[data-testid="model-selector-dropdown"][aria-label*=" 高"]) {
+  --color-input-effort-1: white;
+  --color-input-effort-2: white;
+  --color-input-effort-3: var(--color-input-model);
+  --color-input-effort-4: var(--color-input-model);
+  --color-input-effort-5: var(--color-input-model);
+}
+
+/* Level 4 (Very high) */
+body:has(button[data-testid="model-selector-dropdown"][aria-label*=" 超高"]) {
+  --color-input-effort-1: white;
+  --color-input-effort-2: var(--color-input-model);
+  --color-input-effort-3: var(--color-input-model);
+  --color-input-effort-4: var(--color-input-model);
+  --color-input-effort-5: var(--color-input-model);
+}
+
+/* Level 5 (Haiku Expanded / Maximum) */
+body:has(button[data-testid="model-selector-dropdown"][aria-label*=" 拡張"]),
+body:has(button[data-testid="model-selector-dropdown"][aria-label*=" 最大"]) {
+  --color-input-effort-1: var(--color-input-model);
+  --color-input-effort-2: var(--color-input-model);
+  --color-input-effort-3: var(--color-input-model);
+  --color-input-effort-4: var(--color-input-model);
+  --color-input-effort-5: var(--color-input-model);
+}
+
+/* Chat input effort border */
+
+[data-chat-input-container="true"] .bg-surface-3,
+.bg-surface-3.rounded-composer {
+  position: relative;
+  background-color: var(--color-bg-input) !important;
+
+  box-shadow:
+    inset 0 0 0 1.0px black,
+    inset 0 0 0 2.5px var(--color-input-effort-1),
+    inset 0 0 0 4.0px var(--color-input-effort-2),
+    inset 0 0 0 5.5px var(--color-input-effort-3),
+    inset 0 0 0 7.0px var(--color-input-effort-4),
+    inset 0 0 0 8.5px var(--color-input-effort-5),
+    inset 0 0 0 9.5px black !important;
 }
 
 
