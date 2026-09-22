@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Copilot M365 Always Show Message Metadata",
+  "version": "1.0.0",
+  "description": "Always shows message timestamps and actions in Microsoft 365 Copilot.",
+  "content_scripts": [
+    {
+      "matches": ["https://m365.cloud.microsoft/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
